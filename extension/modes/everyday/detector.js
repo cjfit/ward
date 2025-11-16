@@ -64,6 +64,7 @@ Rules:
 - Say "SCAM" ONLY if the email or webpage content contains:
   * Prizes/sweepstakes: "You've won!", free gifts requiring personal info
   * Unclaimed funds: "You have unclaimed money/funds", "Claim your refund/settlement"
+  * Free money/earning schemes: hourly free crypto/cash, "earn $X per hour", referral commissions as main feature, gambling sites promising free money
   * Investment/crypto: guaranteed returns, low-risk promises
   * Fake checks: deposit this check, mystery shopper schemes
   * Romance/friendship: online relationship asking for money
@@ -145,19 +146,20 @@ C) ISOLATION TACTICS: "Don't tell anyone", "Keep this secret", "You can't trust 
 RULE #3: COMMON SCAM PATTERNS (flag if present):
 1. Prizes/Sweepstakes: "You've won!", free gifts requiring personal/payment info, "Congratulations! You've been selected!"
 2. Unclaimed Funds: "You have unclaimed money/funds", "Claim your refund", "Unclaimed settlement waiting", requests for personal info or fees to claim
-3. Phishing/Spoofing: Fake login pages, fake domains (paypal-secure.tk, amaz0n.net), password/credit card requests from suspicious sources
-4. Fake Merchandise: Too-good-to-be-true deals, fake online stores, suspiciously low prices on luxury goods
-5. Investment/Crypto Scams: Guaranteed returns, "no risk" claims, fake trading platforms, pressure to invest quickly
-6. Fake Check Scams: "Deposit this check", mystery shopper jobs, overpayment schemes, "cash this and send money back"
-7. Advance Fee Loans: "Pay upfront fee to get loan", credit repair from non-banks, "approved" loans requiring payment first
-8. Romance/Friendship Scams: Online relationship asking for money, "I need help urgently", sob stories, financial requests from "friends"
-9. Adult Services/Info Scams: Fake subscription charges, blackmail threats, fake dating sites requesting payment
-10. Chrome Extension Prompts: "Install our extension to verify", security extensions required for basic access, fake driver update warnings, "missing drivers" alerts
-11. Suspicious Extension Installation Sites: Ad blocker or extension installation sites that are NOT the official Chrome Web Store (chrome.google.com/webstore), especially ad blockers from random domains, popup installers
-12. Fake Login Pages: Login pages impersonating legitimate businesses (banks, retailers like Best Buy, services) with suspicious domains, typosquatting, or mismatched URLs
-13. Remote Support Phishing: ScreenConnect/ConnectWise login pages, unexpected remote support requests via email/phone/text (legitimate support never contacts unsolicited)
-14. Healthcare/Medication Scams: Medicaid/Medicare fake enrollment, discount prescription cards requesting personal info, pharmacy sites with suspicious pricing
-15. Suspicious Domain Login Pages: Login forms for known brands hosted on website builders (replit.app, netlify.app, glitch.me, wix.com, weebly.com) or domains with random letter/number strings (abc123xyz.site, xk7m2n.netlify.app)
+3. Free Money/Earning Schemes: "Free Bitcoin every hour", "Earn $X per hour guaranteed", sites promising regular free crypto/cash, referral-heavy earning platforms, gambling sites with unrealistic free money claims
+4. Phishing/Spoofing: Fake login pages, fake domains (paypal-secure.tk, amaz0n.net), password/credit card requests from suspicious sources
+5. Fake Merchandise: Too-good-to-be-true deals, fake online stores, suspiciously low prices on luxury goods
+6. Investment/Crypto Scams: Guaranteed returns, "no risk" claims, fake trading platforms, pressure to invest quickly
+7. Fake Check Scams: "Deposit this check", mystery shopper jobs, overpayment schemes, "cash this and send money back"
+8. Advance Fee Loans: "Pay upfront fee to get loan", credit repair from non-banks, "approved" loans requiring payment first
+9. Romance/Friendship Scams: Online relationship asking for money, "I need help urgently", sob stories, financial requests from "friends"
+10. Adult Services/Info Scams: Fake subscription charges, blackmail threats, fake dating sites requesting payment
+11. Chrome Extension Prompts: "Install our extension to verify", security extensions required for basic access, fake driver update warnings, "missing drivers" alerts
+12. Suspicious Extension Installation Sites: Ad blocker or extension installation sites that are NOT the official Chrome Web Store (chrome.google.com/webstore), especially ad blockers from random domains, popup installers
+13. Fake Login Pages: Login pages impersonating legitimate businesses (banks, retailers like Best Buy, services) with suspicious domains, typosquatting, or mismatched URLs
+14. Remote Support Phishing: ScreenConnect/ConnectWise login pages, unexpected remote support requests via email/phone/text (legitimate support never contacts unsolicited)
+15. Healthcare/Medication Scams: Medicaid/Medicare fake enrollment, discount prescription cards requesting personal info, pharmacy sites with suspicious pricing
+16. Suspicious Domain Login Pages: Login forms for known brands hosted on website builders (replit.app, netlify.app, glitch.me, wix.com, weebly.com) or domains with random letter/number strings (abc123xyz.site, xk7m2n.netlify.app)
 
 RULE #4: Email Sender Domain Analysis (for emails only)
 - Check if email FROM domain matches the company: Discord emails should come from @discord.com, PayPal from @paypal.com
