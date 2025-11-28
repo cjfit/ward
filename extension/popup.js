@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   const ignoreDomainBtn = document.getElementById('ignoreDomainBtn');
   const unsupportedBanner = document.getElementById('unsupportedBanner');
 
+  // Set version from manifest
+  const manifest = chrome.runtime.getManifest();
+  document.getElementById('version').textContent = `v${manifest.version}`;
+
   // Get current tab
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
