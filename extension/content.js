@@ -228,18 +228,24 @@ function showWarningBanner(analysisResult) {
       overflow-y: auto;
     ">
       <div style="display: flex; align-items: center; gap: 16px; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0;">
-          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-          <line x1="12" y1="9" x2="12" y2="13"></line>
-          <line x1="12" y1="17" x2="12.01" y2="17"></line>
-        </svg>
+        <div style="position: relative; width: 32px; height: 32px; flex-shrink: 0;">
+          <img src="${chrome.runtime.getURL('icons/ward-shield.png')}" width="32" height="32" alt="Ward shield" style="display: block;">
+          <div style="position: absolute; bottom: -6px; right: -6px; background: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border: 2px solid #E03C31;">
+            <span style="color: #DC2626; font-size: 16px; font-weight: bold; line-height: 1;">!</span>
+          </div>
+        </div>
         <div style="text-align: center; flex: 1;">
           <div style="font-weight: 600; margin-bottom: 4px; font-size: 15px;">
             ${recommendation}
           </div>
           <div style="font-size: 13px; opacity: 0.95; display: flex; align-items: center; justify-content: center; gap: 6px;">
             <span>Open the Ward extension</span>
-            <img src="${chrome.runtime.getURL('icons/icon-danger-32.png')}" width="20" height="20" style="display: block;" alt="Ward icon">
+            <div style="position: relative; width: 20px; height: 20px; flex-shrink: 0;">
+              <img src="${chrome.runtime.getURL('icons/ward-shield.png')}" width="20" height="20" alt="Ward shield" style="display: block;">
+              <div style="position: absolute; bottom: -3px; right: -3px; background: white; border-radius: 50%; width: 12px; height: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #E03C31;">
+                <span style="color: #DC2626; font-size: 8px; font-weight: bold; line-height: 1;">!</span>
+              </div>
+            </div>
             <span>in your toolbar</span>
           </div>
         </div>

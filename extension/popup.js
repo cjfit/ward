@@ -103,12 +103,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   function displayResult(result) {
     // Handle skipped cases
     if (result.judgment === 'SKIPPED' || result.method === 'skipped') {
-      statusIcon.className = 'status-icon safe';
+      statusIcon.className = 'status-icon skipped';
       statusIcon.innerHTML = `
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="8" y1="12" x2="16" y2="12"></line>
-        </svg>
+        <div style="background: #F97316; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 14px; height: 3px; background: white; border-radius: 2px;"></div>
+        </div>
       `;
       statusTitle.textContent = 'Page skipped';
       statusDescription.textContent = 'This page type is not scanned';
@@ -183,11 +182,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       statusIcon.className = 'status-icon danger';
       statusIcon.innerHTML = `
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-          <line x1="12" y1="9" x2="12" y2="13"></line>
-          <line x1="12" y1="17" x2="12.01" y2="17"></line>
-        </svg>
+        <div style="position: relative; width: 28px; height: 28px;">
+          <img src="icons/ward-shield.png" width="28" height="28" alt="Ward shield" style="display: block;">
+          <div style="position: absolute; bottom: -5px; right: -5px; background: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border: 2px solid #DC2626;">
+            <span style="color: #DC2626; font-size: 14px; font-weight: bold; line-height: 1;">!</span>
+          </div>
+        </div>
       `;
       statusTitle.textContent = 'Threat Detected';
       // Format bold text in summary with ** markers

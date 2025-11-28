@@ -209,7 +209,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       // Stop scanning animation
       stopScanningAnimation(sender.tab.id);
 
-      updateBadge(sender.tab.id, false);
+      updateBadge(sender.tab.id, false, skipResult);
       sendResponse(skipResult);
       return;
     }
@@ -532,27 +532,37 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 function updateBadge(tabId, isMalicious, result = null) {
   // Check for quota exceeded
   if (result && result.judgment === 'QUOTA_EXCEEDED') {
-    chrome.action.setBadgeText({ text: 'X', tabId });
-    chrome.action.setBadgeBackgroundColor({ color: '#DC2626', tabId }); // Red
+    chrome.action.setBadgeText({ text: '', tabId });
     chrome.action.setIcon({
       tabId,
       path: {
-        16: 'icons/icon-danger-16.png',
-        32: 'icons/icon-danger-32.png',
-        48: 'icons/icon-danger-48.png',
-        128: 'icons/icon-danger-128.png'
+        16: 'icons/icon-ward-danger-16.png',
+        32: 'icons/icon-ward-danger-32.png',
+        48: 'icons/icon-ward-danger-48.png',
+        128: 'icons/icon-ward-danger-128.png'
       }
     });
   } else if (isMalicious) {
-    chrome.action.setBadgeText({ text: '!', tabId });
-    chrome.action.setBadgeBackgroundColor({ color: '#DC2626', tabId }); // Red
+    chrome.action.setBadgeText({ text: '', tabId });
     chrome.action.setIcon({
       tabId,
       path: {
-        16: 'icons/icon-danger-16.png',
-        32: 'icons/icon-danger-32.png',
-        48: 'icons/icon-danger-48.png',
-        128: 'icons/icon-danger-128.png'
+        16: 'icons/icon-ward-danger-16.png',
+        32: 'icons/icon-ward-danger-32.png',
+        48: 'icons/icon-ward-danger-48.png',
+        128: 'icons/icon-ward-danger-128.png'
+      }
+    });
+  } else if (result && (result.judgment === 'SKIPPED' || result.method === 'skipped')) {
+    // Skipped pages get orange badge
+    chrome.action.setBadgeText({ text: '', tabId });
+    chrome.action.setIcon({
+      tabId,
+      path: {
+        16: 'icons/icon-ward-skipped-16.png',
+        32: 'icons/icon-ward-skipped-32.png',
+        48: 'icons/icon-ward-skipped-48.png',
+        128: 'icons/icon-ward-skipped-128.png'
       }
     });
   } else {
@@ -560,10 +570,10 @@ function updateBadge(tabId, isMalicious, result = null) {
     chrome.action.setIcon({
       tabId,
       path: {
-        16: 'icons/icon-safe-16.png',
-        32: 'icons/icon-safe-32.png',
-        48: 'icons/icon-safe-48.png',
-        128: 'icons/icon-safe-128.png'
+        16: 'icons/icon-ward-safe-16.png',
+        32: 'icons/icon-ward-safe-32.png',
+        48: 'icons/icon-ward-safe-48.png',
+        128: 'icons/icon-ward-safe-128.png'
       }
     });
   }
@@ -652,14 +662,14 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
       };
       chrome.storage.local.set({ [`detection_${tabId}`]: skippedResult });
 
-      // Set icon to neutral state
+      // Set icon to skipped state with orange badge
       chrome.action.setIcon({
         tabId: tabId,
         path: {
-          16: 'icons/icon-safe-16.png',
-          32: 'icons/icon-safe-32.png',
-          48: 'icons/icon-safe-48.png',
-          128: 'icons/icon-safe-128.png'
+          16: 'icons/icon-ward-skipped-16.png',
+          32: 'icons/icon-ward-skipped-32.png',
+          48: 'icons/icon-ward-skipped-48.png',
+          128: 'icons/icon-ward-skipped-128.png'
         }
       });
 
@@ -753,17 +763,7 @@ function stopScanningAnimation(tabId) {
   if (animationInterval) {
     clearInterval(animationInterval);
     SCANNING_ANIMATIONS.delete(tabId);
-
-    // Reset to default safe icon
-    chrome.action.setIcon({
-      tabId,
-      path: {
-        16: 'icons/icon-safe-16.png',
-        32: 'icons/icon-safe-32.png',
-        48: 'icons/icon-safe-48.png',
-        128: 'icons/icon-safe-128.png'
-      }
-    });
+    // Icon will be set by updateBadge() right after this
   }
 }
 

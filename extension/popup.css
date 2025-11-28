@@ -159,6 +159,11 @@ body {
   animation: shake 0.5s ease-out;
 }
 
+.status-icon.skipped {
+  background: #FED7AA;
+  color: #F97316;
+}
+
 @keyframes scaleIn {
   from {
     transform: scale(0.8);
