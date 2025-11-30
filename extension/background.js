@@ -110,10 +110,23 @@ async function analyzeContent(content, url = 'unknown') {
 
   try {
     console.log(`[Ward] Running analysis in ${activeMode} mode`);
-    
+
     if (activeMode === 'cloud') {
       return await analyzeCloud(currentSessions, content, url);
     } else {
+      // Check if local mode sessions are available
+      if (!currentSessions || !currentSessions.analyzerSession || !currentSessions.judgeSession) {
+        console.error('[Ward] Local mode sessions not initialized');
+        return {
+          isMalicious: false,
+          analysis: 'Local AI mode is not initialized. The Prompt API may still be downloading or is not available on your device.',
+          judgment: 'ERROR',
+          method: 'error',
+          mode: activeMode,
+          contentLength: content.length
+        };
+      }
+
       return await analyzeLocal(
         currentSessions.analyzerSession,
         currentSessions.judgeSession,

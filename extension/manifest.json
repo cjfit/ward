@@ -49,7 +49,8 @@
         "icons/icon-ward-safe-16.png",
         "icons/icon-ward-safe-32.png",
         "icons/icon-ward-skipped-16.png",
-        "icons/icon-ward-skipped-32.png"
+        "icons/icon-ward-skipped-32.png",
+        "images/ward-pinning-gif.gif"
       ],
       "matches": ["<all_urls>"]
     }
