@@ -105,16 +105,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Display result
   function displayResult(result) {
-    // Handle skipped cases
-    if (result.judgment === 'SKIPPED' || result.method === 'skipped') {
+    // Handle skipped and ignored cases
+    if (result.judgment === 'SKIPPED' || result.method === 'skipped' || result.judgment === 'IGNORED' || result.method === 'ignored') {
       statusIcon.className = 'status-icon skipped';
       statusIcon.innerHTML = `
         <div style="background: #F97316; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;">
           <div style="width: 14px; height: 3px; background: white; border-radius: 2px;"></div>
         </div>
       `;
-      statusTitle.textContent = 'Page skipped';
-      statusDescription.textContent = 'This page type is not scanned';
+
+      if (result.judgment === 'IGNORED' || result.method === 'ignored') {
+        statusTitle.textContent = 'Page ignored';
+        statusDescription.textContent = 'This page will not be scanned';
+      } else {
+        statusTitle.textContent = 'Page skipped';
+        statusDescription.textContent = 'This page type is not scanned';
+      }
 
       if (result.analysis) {
         analysisDetails.classList.remove('hidden');

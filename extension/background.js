@@ -236,7 +236,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           }
         });
 
-        updateBadge(sender.tab.id, false);
+        // Stop scanning animation
+        stopScanningAnimation(sender.tab.id);
+
+        updateBadge(sender.tab.id, false, ignoreResult);
         sendResponse(ignoreResult);
         return;
       }
@@ -553,8 +556,8 @@ function updateBadge(tabId, isMalicious, result = null) {
         128: 'icons/icon-ward-danger-128.png'
       }
     });
-  } else if (result && (result.judgment === 'SKIPPED' || result.method === 'skipped')) {
-    // Skipped pages get orange badge
+  } else if (result && (result.judgment === 'SKIPPED' || result.method === 'skipped' || result.judgment === 'IGNORED' || result.method === 'ignored')) {
+    // Skipped and ignored pages get orange badge
     chrome.action.setBadgeText({ text: '', tabId });
     chrome.action.setIcon({
       tabId,
