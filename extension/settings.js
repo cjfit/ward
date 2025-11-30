@@ -1,6 +1,13 @@
 // Ward Settings
 
 document.addEventListener('DOMContentLoaded', async () => {
+  // Set version from manifest
+  const manifest = chrome.runtime.getManifest();
+  const versionEl = document.getElementById('versionNumber');
+  if (versionEl) {
+    versionEl.textContent = manifest.version;
+  }
+
   // Check auth status
   checkAuthStatus();
 
