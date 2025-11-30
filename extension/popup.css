@@ -270,28 +270,14 @@ body {
   flex: 1;
 }
 
-.info-btn {
-  background: #DC2626;
-  border: none;
-  color: white;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+.chevron-icon {
+  color: #991B1B;
   flex-shrink: 0;
-  transition: background 0.2s;
+  transition: transform 0.2s ease;
 }
 
-.info-btn:hover {
-  background: #B91C1C;
-}
-
-.info-btn svg {
-  width: 16px;
-  height: 16px;
+.action-box:hover .chevron-icon {
+  color: #7F1D1D;
 }
 
 /* Full recommendation text (hidden initially) */
@@ -316,8 +302,7 @@ body {
 }
 
 .expanded-details.open {
-  max-height: 400px;
-  overflow-y: auto;
+  max-height: none;
   margin-top: 12px;
 }
 

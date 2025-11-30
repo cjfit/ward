@@ -225,17 +225,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         fullRecommendation = 'Exercise caution when interacting with this content.';
       }
 
-      // Display prominent action box with info button
+      // Display prominent action box with chevron
       analysisText.innerHTML = `
         <div class="action-box">
           <div class="action-text">${boldAction}</div>
-          <button class="info-btn" title="More details">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-          </button>
+          <svg class="chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
         </div>
         <div class="full-recommendation">${fullRecommendation.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')}</div>
       `;
@@ -264,7 +260,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       // Make entire recommendation box clickable to toggle accordion
       analysisText.onclick = () => {
-        expandedDetails.classList.toggle('open');
+        const isOpen = expandedDetails.classList.toggle('open');
+        const chevron = analysisText.querySelector('.chevron-icon');
+        if (chevron) {
+          chevron.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
       };
 
       // Show ignore buttons

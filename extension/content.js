@@ -313,6 +313,11 @@ function showWarningBanner(analysisResult) {
 
 // Show quota exceeded banner
 function showQuotaExceededBanner(analysisResult) {
+  // Don't show if user already dismissed it
+  if (quotaBannerDismissed) {
+    return;
+  }
+
   // Check if banner already exists
   if (document.getElementById('ward-quota-banner')) {
     return;
@@ -387,6 +392,7 @@ function showQuotaExceededBanner(analysisResult) {
 
   // Add close button handler
   document.getElementById('ward-close-quota-banner').addEventListener('click', () => {
+    quotaBannerDismissed = true; // Remember user dismissed it
     banner.remove();
   });
 }
@@ -394,6 +400,7 @@ function showQuotaExceededBanner(analysisResult) {
 // Track if analysis is in progress to prevent duplicate requests
 let analysisInProgress = false;
 let lastAnalyzedContent = '';
+let quotaBannerDismissed = false; // Track if user dismissed quota banner
 
 // Analyze page content when loaded
 async function analyzePage() {
